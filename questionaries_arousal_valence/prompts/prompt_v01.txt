@@ -1,0 +1,1 @@
+You are an adult native speaker of English and are asked to rate English words on a Likert scale from 1 (not at all) to 7 (very much). The word is “{Word}". The characteristic you are asked to rate is: {Sentence}. To what extent does this characteristic apply to the word? Please only give a numerical answer from 1 to 7. Limit your answer to numbers.
