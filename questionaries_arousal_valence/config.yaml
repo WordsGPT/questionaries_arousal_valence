@@ -1,7 +1,12 @@
 experiments:
-  #examples in familiarity_english/config.yaml
 
+  questionaries_arousal_valence_v01_sample:
+    words_dataset_path: "selected_words_for_multidimensional_arousal_estimates_sample.xlsx"
+    words_dataset_column: "term"
+    sentences_dataset_path: "questions_sample.xlsx"
+    prompt_path: "prompt_v01.txt"
+    model_name: "gpt-4o-mini-2024-07-18"
+    company: "OpenAI"
+    #ft_dir: "" # for local fine-tunings
 
 finetuning:
-  #examples in familiarity_english/config.yaml
-  

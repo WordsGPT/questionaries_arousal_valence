@@ -65,6 +65,8 @@ def openAI_processing(results_content_file, batches_content_file):
         index += 1
         weighted_sum = None
         logprob = None
+        word_input = None
+        feature_value = None
         if match_key in entry and entry[match_key] in lookup:
             combined_entry = {**entry, **lookup[entry[match_key]]}
             custom_id = combined_entry['custom_id']
