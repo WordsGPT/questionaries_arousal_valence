@@ -9,4 +9,13 @@ experiments:
     company: "OpenAI"
     #ft_dir: "" # for local fine-tunings
 
+  questionaries_arousal_valence_v01:
+    words_dataset_path: "selected_words_for_multidimensional_arousal_estimates.xlsx"
+    words_dataset_column: "term"
+    sentences_dataset_path: "questions.xlsx"
+    prompt_path: "prompt_v01.txt"
+    model_name: "gpt-4o-mini-2024-07-18"
+    company: "OpenAI"
+    #ft_dir: "" # for local fine-tunings
+
 finetuning:
