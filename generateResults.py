@@ -7,7 +7,6 @@ import time
 import pandas as pd
 import sys
 
-
 """ USAGE:
 python generateResults_json_output.py [EXPERIMENT_PATH][mode] [language]
 
@@ -74,7 +73,7 @@ def openAI_processing(results_content_file, batches_content_file):
         if match_key in entry and entry[match_key] in lookup:
            combined_entry = {**entry, **lookup[entry[match_key]]}
            
-           print(entry, lookup[entry[match_key]])
+           if index == 1: print(combined_entry.keys())
            
            custom_id = combined_entry['custom_id']
            if mode == "json":             
@@ -151,7 +150,6 @@ if __name__ == "__main__":
     timestamp = int(time.time())
     output_file = f'{EXPERIMENT_PATH}/output_{timestamp}.xlsx'
 
-
     if country == 'german':
         # TO CONFIGURE DEPENDING ON YOUR CASE STUDY #
         word_constant = 'Wort'
@@ -160,28 +158,37 @@ if __name__ == "__main__":
         open_quotations_constant = '„'
         closing_quotations_constant = '”'
 
-
     #results_file = f"{EXPERIMENT_PATH}/results/results.jsonl"
     #batches_file = f"{EXPERIMENT_PATH}/batches/batches.jsonl"
     results_file = f"{EXPERIMENT_PATH}/batch_69768be725ec81909eff329e70702946_output.jsonl"
     batches_file = f"{EXPERIMENT_PATH}/questionaries_arousal_valence_v01_sample_batch_0_2026-01-25-22-29.jsonl"
 
-
     results_content_file = read_jsonl(results_file)
     batches_content_file = read_jsonl(batches_file)
 
-    if 'custom_id' in batches_content_file[0]:
-        combined_data = openAI_processing(results_content_file, batches_content_file)
-    # elif 'key' in batches_content_file[0]:
-        # combined_data = google_processing(results_content_file, batches_content_file)
-    # elif 'id' in batches_content_file[0]:
-        # combined_data = huggingface_processing(results_content_file, batches_content_file)
-    else:
-        print("Unknown batch format, cannot process results.")
+    # if 'custom_id' in batches_content_file[0]:
+        # combined_data = openAI_processing(results_content_file, batches_content_file)
+    # # elif 'key' in batches_content_file[0]:
+        # # combined_data = google_processing(results_content_file, batches_content_file)
+    # # elif 'id' in batches_content_file[0]:
+        # # combined_data = huggingface_processing(results_content_file, batches_content_file)
+    # else:
+        # print("Unknown batch format, cannot process results.")
 
-    all_fieldnames = list(combined_data[0].keys())
+    # all_fieldnames = list(combined_data[0].keys())
 
-    df = pd.DataFrame(combined_data)
-    df.to_excel(output_file, index=False, columns=all_fieldnames)
+    # df = pd.DataFrame(combined_data)
+    # df.to_excel(output_file, index=False, columns=all_fieldnames)
 
-    print(f"Combined data written to {output_file}")
+    # print(f"Combined data written to {output_file}")
+    
+    #https://medium.com/@amit25173/pandas-subset-columns-guide-071e2533918d
+    batches_table = pd.DataFrame(batches_content_file).loc(:, ['custom_id'])
+    print(batches_table)
+    results_table_1 = pd.DataFrame(results_content_file).loc(:, ['custom_id', 'error'])
+    results_table_2 = pd.DataFrame(results_content_file).loc(:, ['custom_id', 'response'])
+    #https://stackoverflow.com/questions/47561788/how-to-perform-an-operation-on-specific-columns-within-pandas-dataframe-while-pr
+    results_table =  pd.DataFrame(results_content_file).loc(:, ['custom_id', 'response'])
+    print(results_table_1)
+    print(results_table_2)
+    
