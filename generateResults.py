@@ -163,8 +163,8 @@ if __name__ == "__main__":
     results_file = f"{EXPERIMENT_PATH}/batch_69768be725ec81909eff329e70702946_output.jsonl"
     batches_file = f"{EXPERIMENT_PATH}/questionaries_arousal_valence_v01_sample_batch_0_2026-01-25-22-29.jsonl"
 
-    results_content_file = read_jsonl(results_file)
-    batches_content_file = read_jsonl(batches_file)
+    results_content = read_jsonl(results_file)
+    batches_content = read_jsonl(batches_file)
 
     # if 'custom_id' in batches_content_file[0]:
         # combined_data = openAI_processing(results_content_file, batches_content_file)
@@ -183,12 +183,16 @@ if __name__ == "__main__":
     # print(f"Combined data written to {output_file}")
     
     #https://medium.com/@amit25173/pandas-subset-columns-guide-071e2533918d
-    batches_table = pd.DataFrame(batches_content_file).loc(:, ['custom_id'])
+    batches_table = pd.DataFrame(batches_content).loc[:, ['custom_id']]
     print(batches_table)
-    results_table_1 = pd.DataFrame(results_content_file).loc(:, ['custom_id', 'error'])
-    results_table_2 = pd.DataFrame(results_content_file).loc(:, ['custom_id', 'response'])
+    results_table = pd.DataFrame(results_content).loc[:, ['custom_id', 'error', 'response']]
+    
+    # Hacemos merge para detectar si hemos perdido algún resultado con respecto a la entrada
+    # En ese caso habría filas que contendrían ['custom_id', NULL, NULL, ...]
+    merged_table = batches_table.merge(results_table, how = 'left', on = 'custom_id')
+    print(merged_table)
+    
+    
+    
     #https://stackoverflow.com/questions/47561788/how-to-perform-an-operation-on-specific-columns-within-pandas-dataframe-while-pr
-    results_table =  pd.DataFrame(results_content_file).loc(:, ['custom_id', 'response'])
-    print(results_table_1)
-    print(results_table_2)
     
