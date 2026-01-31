@@ -49,7 +49,7 @@ if __name__ == "__main__":
     excel_rows = list()
     excel_rows_dict = dict()
     for list_item in results_content:
-        word, sentence_id = re.match( r'questionaries_arousal_valence_task_([^_].+)_([^_].+)', list_item['custom_id']).group(1, 2)
+        word, sentence_id = re.match( r'questionaries_arousal_valence_task_([^_]+)_(.+)', list_item['custom_id']).group(1, 2)
         column_result_name = sentence_id + '_result'
         column_logprob_name = sentence_id + '_logprob'
         ia_result = int(list_item['response']['body']['choices'][0]['message']['content'])
