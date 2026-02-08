@@ -30,10 +30,12 @@ if __name__ == "__main__":
     timestamp = int(time.time())
     output_file = f'{EXPERIMENT_PATH}/output_{timestamp}.xlsx'
 
-    results_file = f"{EXPERIMENT_PATH}/results/results.jsonl"
-    batches_file = f"{EXPERIMENT_PATH}/batches/batches.jsonl"
-    #results_file = f"{EXPERIMENT_PATH}/batch_69768be725ec81909eff329e70702946_output.jsonl"
-    #batches_file = f"{EXPERIMENT_PATH}/questionaries_arousal_valence_v01_sample_batch_0_2026-01-25-22-29.jsonl"
+    #results_file = f"{EXPERIMENT_PATH}/results/results.jsonl"
+    #batches_file = f"{EXPERIMENT_PATH}/batches/batches.jsonl"
+    #words_file = f"{EXPERIMENT_PATH}/data/selected_words_for_multidimensional_arousal_estimates.xlsx
+    results_file = f"{EXPERIMENT_PATH}/batch_69768be725ec81909eff329e70702946_output.jsonl"
+    batches_file = f"{EXPERIMENT_PATH}/questionaries_arousal_valence_v01_sample_batch_0_2026-01-25-22-29.jsonl"
+    words_file = f"{EXPERIMENT_PATH}/data/selected_words_for_multidimensional_arousal_estimates_sample.xlsx
 
     results_content = read_jsonl(results_file)
     batches_content = read_jsonl(batches_file)
