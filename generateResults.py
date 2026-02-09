@@ -35,7 +35,10 @@ if __name__ == "__main__":
     #words_file = f"{EXPERIMENT_PATH}/data/selected_words_for_multidimensional_arousal_estimates.xlsx
     results_file = f"{EXPERIMENT_PATH}/batch_69768be725ec81909eff329e70702946_output.jsonl"
     batches_file = f"{EXPERIMENT_PATH}/questionaries_arousal_valence_v01_sample_batch_0_2026-01-25-22-29.jsonl"
-    words_file = f"{EXPERIMENT_PATH}/data/selected_words_for_multidimensional_arousal_estimates_sample.xlsx
+    words_file = f"{EXPERIMENT_PATH}/data/selected_words_for_multidimensional_arousal_estimates_sample.xlsx"
+
+    word_info = pd.read_excel(words_file).to_dict()['term']
+    print(word_info)
 
     results_content = read_jsonl(results_file)
     batches_content = read_jsonl(batches_file)
